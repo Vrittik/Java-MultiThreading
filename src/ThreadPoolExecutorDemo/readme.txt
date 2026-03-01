@@ -33,3 +33,9 @@ core pool size number of tasks first and then new tasks it put in the queue,
 after the queue is full and more tasks are coming, executor creates new thread for
 those tasks until total threads < maxPoolSize
 If any more tasks are requested, they are gracefully rejected
+
+Rejection also has strategies
+1. new ThreadPoolExecutor.AbortPolicy - Throws RejectedExecutionException
+2. new ThreadPoolExecutor.CallerRunsPolicy - Let the caller run this task if free
+3. new ThreadPoolExecutor.DiscardPolicy - Silently discards the task without exception
+4. new ThreadPoolExecutor.DiscardOldestPolicy - Discard oldest task from the queue and put this new task
