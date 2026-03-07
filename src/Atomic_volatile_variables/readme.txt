@@ -23,6 +23,21 @@ Atomic
 Atomic variables uses CAS operation to modify the values, they keep on running the loop
 until CAS operation succeeds, so that concurrency can be achieved.
 
+AtomicReference<T> is used to store a reference to an object in a thread-safe way.
+
+It allows multiple threads to update the reference without using locks.
+
+The update happens atomically using a compare-and-swap (CAS) operation,
+which guarantees that the reference change happens as a single operation.
+
+If two or more threads try to update the reference at the same time,
+only one thread succeeds and the others must retry.
+
+AtomicReference only guarantees atomic updates of the reference itself,
+not the internal state of the object.
+
+It is commonly used in lock-free algorithms and concurrent data structures.
+
 do{
 o = readFromMemory()
 }
